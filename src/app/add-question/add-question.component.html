@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="jumbotron">
+    <div class="row">
+      <div class="col-md-6 offset-md-3 "style="margin-top : 50px">
+        <form [formGroup]="formdata" (ngSubmit) = "registerQuestion(formdata.value)">
+          <div class="form-group row">
+            <input type="text" class="form-control" id="inputQuestion" placeholder="question?" formControlName = "question">
+          </div>
+          <div class="form-group row">
+
+            <input type="text" class="form-control" id="inputAnswer" placeholder="Réponse" formControlName = "answer">
+
+          </div>
+          <div class="form-group row">
+
+            <input type="text" class="form-control" id="inputCase1" placeholder="Réponse 1" formControlName = "resp0">
+
+          </div>
+          <div class="form-group row">
+
+            <input type="text" class="form-control" id="inputCase1" placeholder="Réponse 2" formControlName = "resp1">
+
+          </div>
+          <div class="form-group row">
+
+            <input type="text" class="form-control" id="inputCase1" placeholder="Réponse 3" formControlName = "resp2">
+
+          </div>
+          <div class="form-group row">
+
+            <input type="text" class="form-control" id="inputCase1" placeholder="Réponse 4" formControlName = "resp3">
+
+          </div>
+          <div class="form-group row">
+
+            <select class="form-control" formControlName = "cat">
+               <option *ngFor="let cat of cathegories" [value]="cat" [label]="cat"></option>
+            </select>
+
+          </div>
+          <div class="form-group row">
+
+            <select class="form-control" formControlName = "level">
+               <option *ngFor="let level of levels" [value]="level" [label]="level"></option>
+            </select>
+
+          </div>
+          <div class="form-group row">
+
+            <button type="submit" class="btn btn-warning" [disabled] = "!formdata.valid" >Add</button>
+
+          </div>
+          <div *ngIf="isNotAcceptable">
+            <p class="text-danger">Aucune des réponses données ne corresponds à la bonne réponse</p>
+          </div>
+          <div *ngIf="isAdded">
+            <p class="text-success"> La question a été ajouté avec succès !</p>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

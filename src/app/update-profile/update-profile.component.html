@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="text-center"> Gestion du profile </h1>
+    <div class="col-md-6  "style="margin-top : 50px">
+      <form [formGroup]="formdata" >
+        <div class="form-group row">
+          <input type="password" class="form-control" id="inputPasswordOld" placeholder="Ancien mot de passe" formControlName = "oldpass">
+        </div>
+        <div class="form-group row">
+          <input type="password" class="form-control" id="inputPassword" placeholder="Nouveau mot de passe" formControlName = "pass">
+        </div>
+        <div class="form-group row">
+          <input type="password" class="form-control" id="inputPassword2" placeholder="Confirmation mot de passe" formControlName = "pass2">
+        </div>
+      </form>
+    </div>
+    <div *ngIf="notSimilar">
+      <p class="text-danger">les mots de passes ne sont pas similaire</p>
+    </div>
+    <div *ngIf="falsePass">
+      <p class="text-danger">le mot de passe saisi est incorrect</p>
+    </div>
+    <div *ngIf="uploadedP">
+      <h6 class="text-success"> Mot de passe mit à jour </h6>
+    </div>
+    <div *ngIf="uploaded">
+      <h6 class="text-success"> photo mise à jour </h6>
+    </div>
+    <input
+    style="display: none"
+    type="file" (change)="onFileChanged($event)"
+    #fileInput multiple>
+    <p >{{selectedFile?.name}}</p>
+    <button class="btn btn-primary pleft" (click)="fileInput.click()">Select File</button>
+    <div *ngIf="formdata.valid" class="pleft">
+      <button class="btn btn-warning" (click)="UpdatePassw(formdata.value)" >Update Password</button>
+    </div>
+    <div *ngIf="valid" class="pleft">
+      <button class="btn btn-success" (click)="onUpload()" >Upload Photo</button>
+    </div>
+    <div *ngIf="isNotGoodFile">
+      <h6 class="text-danger"> les formats autorisés sont jpg et png</h6>
+    </div>
+
+
+
+  </div>
+</div>

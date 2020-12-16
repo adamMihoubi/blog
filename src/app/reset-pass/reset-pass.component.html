@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="jumbotron">
+    <div *ngIf="ok">
+      <div class="row">
+        <div class="col-md-6 offset-md-3 ">
+          <h4 class="text-primary"> Rénitialisation de votre mot de passe {{user?.firstName}} </h4>
+          <form [formGroup]="formdata" (ngSubmit) = "onClickSubmit(formdata.value)">
+            <div class="form-group row">
+              <input type="password" class="form-control" id="inputPass1" placeholder="Nouveau mot de passe" formControlName = "pass1">
+            </div>
+            <div class="form-group row">
+              <input type="password" class="form-control" id="inputPass2" placeholder="Confirmer mot de passe" formControlName = "pass2">
+            </div>
+            <div class="form-group row">
+              <button type="submit" class="btn btn-primary" [disabled] = "!formdata.valid" >Rénitialiser</button>
+            </div>
+          </form>
+          <div *ngIf="badPass">
+            <p class="text-danger">Les mots de passes ne sont pas identiques </p>
+          </div>
+          <div *ngIf="update">
+            <p class="text-success">Mot de passe réinitialisé avec succès  </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="!ok">
+      <h4 class="text-danger"> Erreur : lien non valide </h4>
+    </div>
+  </div>
+</div>

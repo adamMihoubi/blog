@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="jumbotron">
+    <div class="row">
+      <div class="col-sm">
+        <div *ngIf="mySrc != undefined">
+          <img [src]="mySrc" class ="rounded-circle img-pers">
+        </div>
+          <h1> Bienvenue {{user?.firstName}}</h1>
+      </div>
+      <div class="col-sm">
+          <h3 class="text-warning text-right ">Score : {{user?.score}}</h3>
+      </div>
+    </div>
+    <br>
+    <br>
+    <div class="row">
+      <div class="col-sm">
+          <h5> En cliquant ici vous débuterez l'aventure en répondant à nos questions diverses et variées dans le but d'avoir le meilleur score</h5>
+      </div>
+      <div class="col-sm">
+          <h5> cliquez ici si vous voulez nous quitter et partir vers d'autres horizons</h5>
+      </div>
+      <div class="col-sm" *ngIf="isAdmin">
+        <h5> Oh vous êtes un privilégié vous, dis donc ! en cliquant ici vous pouvez manager la plateforme </h5>
+      </div>
+      <div class="col-sm">
+          <h5> cliquez ici si vous voulez apporter des modifications à votre profile </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm">
+        <button class="btn btn-primary" (click)="play()">Jouer</button>
+      </div>
+      <div class="col-sm">
+        <button class="btn btn-danger" (click)="logOut()"> Déconnexion</button>
+      </div>
+      <div class="col-sm" *ngIf="isAdmin">
+        <button class="btn btn-success" (click)="manage()"> Manage </button>
+      </div>
+      <div class="col-sm">
+        <button class="btn btn-warning" (click)="update()"> Modifier</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="jumbotron">
+    <div class="row">
+      <div class="col-md-6 offset-md-3 ">
+        <div *ngIf="error">
+          <p class=" h6 text-center text-danger">Connectez vous pour accéder à cette page </p>
+        </div>
+        <form [formGroup]="formdata" (ngSubmit) = "onClickSubmit(formdata.value)">
+          <div class="form-group row">
+            <input type="email" class="form-control" id="inputEmail3" placeholder="Email" formControlName = "email">
+          </div>
+          <div class="form-group row">
+            <input type="password" class="form-control" id="inputPassword3" placeholder="Password" formControlName = "passwd">
+          </div>
+          <div class="form-group row">
+            <button type="submit" class="btn btn-primary" [disabled] = "!formdata.valid" >Sign in</button>
+          </div>
+          <div class="form-group row">
+            <p>Pas d'identifiants ? <a class="text-primary" href="/Register">inscrivez vous ! </a></p>
+          </div>
+          <div class="form-group row">
+            <p>Mot de passe oublié ? <a class="text-primary" href="/Reset"> rénitialiser le ! </a></p>
+          </div>
+        </form>
+        <div *ngIf="mpCorrect">
+          <span class="text-danger">Email ou mot de passe incorret </span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

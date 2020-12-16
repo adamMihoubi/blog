@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="jumbotron">
+    <h3 class="text-center"> Gestion des droits utilisateurs </h3>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Prénom</th>
+          <th>Score</th>
+          <th>Rôle</th>
+          <th>Save</th>
+          <th>Delete Historique</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{user?.lastName}}</td>
+          <td>{{user?.firstName}}</td>
+          <td>{{user?.score}}</td>
+          <td>
+            <select class="custom-select" (change)="selectChange(user?.id,$event)" >
+              <option selected="selected" > {{user?.role}}</option>
+              <option *ngFor="let r of filterRole(user?.role)" [value]="r" [label]="r"></option>
+            </select>
+          </td>
+          <td><button class="btn btn-outline-success" (click)=(saveChanges()) [disabled]="!validbutton(user.id)">Save</button></td>
+          <td>
+            <button class="btn btn-outline-danger" (click)=(deleteHisto(user.id))>Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

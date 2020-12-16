@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="jumbotron">
+    <p class="h1 text-center">
+      Classement
+    </p>
+    <table class="table">
+      <thead>
+      <tr>
+        <th>#</th>
+        <th>Photo</th>
+        <th>Nom</th>
+        <th>Prenom</th>
+        <th>Score</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{users.indexOf(user)+1}}</td>
+          <div *ngIf="user?.fileName!=null">
+              <td> <img [src]="mySrc[users.indexOf(user)]" class="rounded-circle img-pers"></td>
+          </div>
+          <div *ngIf="user?.fileName==null">
+              <td> N/A </td>
+          </div>
+          <td>{{user?.lastName}}</td>
+          <td>{{user?.firstName}}</td>
+          <td>{{user?.score}}</td>
+        </tr>
+      </tbody>
+
+    </table>
+  </div>
+</div>

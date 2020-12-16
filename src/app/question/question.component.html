@@ -1,0 +1,33 @@
+<div class="container ">
+  <div class="jumbotron">
+    <div *ngIf="!endGame">
+        <h5 class="text-white bg-dark text-center">{{question?.question}} </h5>
+    </div>
+      <div *ngIf="!endGame && !questionResponded">
+      <table class="table table-dark">
+        <tr>
+          <td>1-<button class="btn btn-dark" (click)="verifyUserResp(question?.responses[0])">{{question?.responses[0]}} </button></td>
+          <td>2- <button class="btn btn-dark" (click)="verifyUserResp(question?.responses[1])"> {{question?.responses[1]}} </button> </td>
+        </tr>
+        <tr>
+          <td>3- <button class="btn btn-dark" (click)="verifyUserResp(question?.responses[2])">{{question?.responses[2]}}</button></td>
+          <td>4- <button class="btn btn-dark" (click)="verifyUserResp(question?.responses[3])"> {{question?.responses[3]}}</button></td>
+        </tr>
+      </table>
+      <div *ngIf="right">
+        <h3 class="text-center text-danger"> Mauvaise réponse !</h3>
+        <h5 class="text-center text-danger"> {{score}}</h5>
+      </div>
+    </div>
+    <div *ngIf="endGame">
+      <h3 class="text-center text-success"> Vous avez répondu à toutes les questions</h3>
+    </div>
+    <div *ngIf="questionResponded && !endGame">
+      <h3 class="text-success"> Vous avez déjà répondu à cette question </h3>
+    </div>
+    <div *ngIf="!endGame">
+      <button class="btn btn-outline-dark" (click)="(pastQuestion())" [disabled] = "(isPastable())"> Back </button>
+      <button class="btn btn-outline-dark" (click)="(nextQuestion())" [disabled] = "(isNextable())"> Next </button>
+    </div>
+  </div>
+</div>
